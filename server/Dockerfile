@@ -1,10 +1,11 @@
 FROM node:12.18.1-alpine as build
 
-WORKDIR /app
-COPY package.json /app/package.json
-RUN npm install --only=prod
-COPY . /app
+WORKDIR /usr/src/app
+COPY . /usr/src/app
+
+RUN npm install -g nodemon
+RUN npm install
 
 EXPOSE 5000
 USER node
-CMD [ "node", "index.js" ]
+CMD [ "nodemon", "/usr/src/app/index.js" ]
