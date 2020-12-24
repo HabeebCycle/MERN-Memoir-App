@@ -22,8 +22,9 @@ app.get("/", (req, res) => {
 //const CONNECTION_URL = "mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.d2e5a.mongodb.net/<DB_NAME>?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 const CONNECTION_URL =
-  process.env.CONNECTION_URL || "mongodb://db-service:27017/memoir-app";
+  process.env.CONNECTION_URL || "mongodb://db-service/memoir-app";
 
+console.log("CONNECTION_URL", CONNECTION_URL);
 mongoose
   .connect(CONNECTION_URL, {
     useNewUrlParser: true,
