@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "./redux";
 
 import App from "./App";
+import "./index.css";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -11,3 +12,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+store.subscribe(() => {
+  console.log("%c Rendered with ? ??", "background: purple; color: #fff");
+  console.log(store.getState());
+});
