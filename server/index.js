@@ -21,9 +21,11 @@ app.get("/", (req, res) => {
 // https://www.mongodb.com/cloud/atlas
 //const CONNECTION_URL = "mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.d2e5a.mongodb.net/<DB_NAME>?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
+const CONNECTION_URL =
+  process.env.CONNECTION_URL || "mongodb://db-service:27017/memoir-app";
 
 mongoose
-  .connect(process.env.CONNECTION_URL, {
+  .connect(CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  api-server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    networks: 
+      - my-network
+    depends_on:
+      - db-service
+    container_name: api-server
+
+  api-client:
+    build: ./client
+    ports:
+      - "80:80"
+    networks: 
+      - my-network
+    depends_on:
+      - api-server
+    container_name: api-client
+
+  db-service:
+    image: mongo:3.6.9
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles
+    networks:
+      - my-network
+    healthcheck:
+      test: "mongo --eval 'db.stats().ok'"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+networks:
+  my-network:
+    name: my-network
