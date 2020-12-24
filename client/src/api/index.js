@@ -4,7 +4,8 @@ import axios from "axios";
 //const url = "http://localhost:5000/posts";
 
 // Docker build
-const url = "http://api-server/posts";
+const url =
+  "http://ip172-18-0-48-bvi7fi1qckh000eeeit0-5000.direct.labs.play-with-docker.com/posts"; //"http://api-server/posts";
 
 export const fetchPosts = () => axios.get(url);
 export const createPost = (newPost) => axios.post(url, newPost);
